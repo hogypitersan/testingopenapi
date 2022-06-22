@@ -12,10 +12,11 @@ import java.util.*;
 
 public class main {
     private static final String HMAC_SHA512 = "HmacSHA512";
+    private static final String URL = "https://member.gaji.id/gajiid-API-new";
 //    private static final String URL = "http://ftp.sofcograha.co.id:3005/gajiid-API-new-test";
-    private static final String URL = "http://localhost:8080/gaji-v2";
-    private static final String APIKEY = "AFF2762EC99D4D1FB66FA679A19F4614";
-    private static final String APIID = "dfdc06db-8090-41b6-b72d-9afa9903ce03";
+//    private static final String URL = "http://localhost:8080/gaji-v2";
+    private static final String APIKEY = "215F30B40D5641A98A0C2C6EE53CA9BA";
+    private static final String APIID = "c10b58b6-f770-423d-a108-e43f1564ef29";
 
     public static void main(String[] args) {
         run();
@@ -47,7 +48,7 @@ public class main {
             }
             System.out.println("");
             run();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
     }
@@ -156,14 +157,13 @@ public class main {
 
             Date date = new Date();
             final String uri = URL + "/open-api/karyawan/search?" + params;
-            final String apiKey = APIKEY;
             final String method = "GET";
             final String contentType = "application/json";
             final long currentMillisecond = date.getTime();
             final String path = "/open-api/karyawan/search";
             final String token = method.concat(contentType).concat(String.valueOf(currentMillisecond)).concat(path);
 
-            SecretKeySpec secretKeySpec = new SecretKeySpec(apiKey.getBytes(), HMAC_SHA512);
+            SecretKeySpec secretKeySpec = new SecretKeySpec(APIKEY.getBytes(), HMAC_SHA512);
             Mac mac = Mac.getInstance(HMAC_SHA512);
             mac.init(secretKeySpec);
             byte[] macBytes = bytesToHex(mac.doFinal(token.getBytes())).getBytes();
@@ -202,14 +202,13 @@ public class main {
 
             Date date = new Date();
             final String uri = URL + "/open-api/pendapatanPotongan/rekapBulanan?"+params;
-            final String apiKey = APIKEY;
             final String method = "GET";
             final String contentType = "application/json";
             final long currentMillisecond = date.getTime();
             final String path = "/open-api/pendapatanPotongan/rekapBulanan";
             final String token = method.concat(contentType).concat(String.valueOf(currentMillisecond)).concat(path);
 
-            SecretKeySpec secretKeySpec = new SecretKeySpec(apiKey.getBytes(), HMAC_SHA512);
+            SecretKeySpec secretKeySpec = new SecretKeySpec(APIKEY.getBytes(), HMAC_SHA512);
             Mac mac = Mac.getInstance(HMAC_SHA512);
             mac.init(secretKeySpec);
             byte[] macBytes = bytesToHex(mac.doFinal(token.getBytes())).getBytes();
@@ -267,14 +266,13 @@ public class main {
 
             Date date = new Date();
             final String uri = URL + "/open-api/pendapatanPotongan";
-            final String apiKey = APIKEY;
             final String method = "POST";
             final String contentType = "application/json";
             final long currentMillisecond = date.getTime();
             final String path = "/open-api/pendapatanPotongan";
             final String token = method.concat(contentType).concat(String.valueOf(currentMillisecond)).concat(path);
 
-            SecretKeySpec secretKeySpec = new SecretKeySpec(apiKey.getBytes(), HMAC_SHA512);
+            SecretKeySpec secretKeySpec = new SecretKeySpec(APIKEY.getBytes(), HMAC_SHA512);
             Mac mac = Mac.getInstance(HMAC_SHA512);
             mac.init(secretKeySpec);
             byte[] macBytes = bytesToHex(mac.doFinal(token.getBytes())).getBytes();
